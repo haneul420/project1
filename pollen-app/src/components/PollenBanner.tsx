@@ -1,10 +1,8 @@
-import { useAppStore } from '../store/useAppStore';
 import { usePollenData } from '../hooks/useData';
 import { getThemeConfig } from '../utils/theme';
-import { ChevronRight, AlertCircle } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 
 export const PollenBanner = () => {
-  const { openDetailModal } = useAppStore();
   const { data, isLoading, isError } = usePollenData();
 
   if (isLoading) {
@@ -31,8 +29,7 @@ export const PollenBanner = () => {
   return (
     <div className="px-4 mt-2 relative">
       <div
-        onClick={openDetailModal}
-        className="relative overflow-hidden rounded-3xl p-6 cursor-pointer transform transition-transform active:scale-95 shadow-lg group border border-white/40"
+        className="relative overflow-hidden rounded-3xl p-6 shadow-lg group border border-white/40"
         style={{ background: theme.bgImage }}
       >
         <div className="relative z-10 flex flex-col h-full justify-between">
@@ -46,10 +43,6 @@ export const PollenBanner = () => {
             <p className="text-gray-700 font-medium text-sm mt-2 opacity-90 leading-relaxed">
               {theme.message}
             </p>
-          </div>
-          
-          <div className="absolute top-1/2 -translate-y-1/2 right-4 w-10 h-10 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center group-hover:bg-white/50 transition-colors">
-            <ChevronRight className={theme.color} />
           </div>
         </div>
       </div>

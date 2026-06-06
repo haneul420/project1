@@ -1,7 +1,7 @@
 import { Header } from './components/Header';
 import { PollenBanner } from './components/PollenBanner';
 import { CalendarWidget } from './components/CalendarWidget';
-import { DetailModal } from './components/DetailModal';
+import { DetailComparison } from './components/DetailComparison';
 import { OnboardingModal } from './components/OnboardingModal';
 import { SettingsModal } from './components/SettingsModal';
 import { usePollenData } from './hooks/useData';
@@ -14,16 +14,17 @@ function App() {
 
   return (
     <div 
-      className="min-h-screen max-w-md mx-auto bg-gray-50 shadow-2xl relative overflow-hidden transition-colors duration-1000"
+      className="min-h-screen w-full max-w-7xl mx-auto bg-gray-50 shadow-2xl relative overflow-hidden transition-colors duration-1000"
       style={theme ? { background: theme.bgImage } : {}}
     >
       <Header />
       
-      <main className="pb-10 relative z-0">
+      <main className="pb-10 relative z-0 flex flex-col gap-6">
+        <DetailComparison />
         <PollenBanner />
         
         {/* Quick Summary */}
-        <div className="mx-4 mt-6">
+        <div className="mx-4 mt-2">
           <div className="bg-white/60 backdrop-blur-md p-4 rounded-2xl text-center border border-white/50 shadow-sm">
             <span className="font-bold text-gray-800">
               오늘의 위험도 요약:
@@ -41,7 +42,6 @@ function App() {
         <CalendarWidget />
       </main>
 
-      <DetailModal />
       <OnboardingModal />
       <SettingsModal />
     </div>
